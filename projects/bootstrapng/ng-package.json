@@ -3,5 +3,6 @@
   "dest": "../../dist/bootstrapng",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "allowedNonPeerDependencies": ["@floating-ui/dom", "vanilla-calendar-pro"]
 }
