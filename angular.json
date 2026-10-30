@@ -36,7 +36,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "none"
         }
       },
       "root": "projects/www",
@@ -56,6 +56,9 @@
               }
             ],
             "styles": ["projects/www/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["node_modules"]
+            },
             "server": "projects/www/src/main.server.ts",
             "outputMode": "server",
             "security": {
