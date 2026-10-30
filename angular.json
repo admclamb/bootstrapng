@@ -11,6 +11,12 @@
       "root": "projects/bootstrapng",
       "sourceRoot": "projects/bootstrapng/src",
       "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineTemplate": true,
+          "style": "none"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:ng-packagr",
