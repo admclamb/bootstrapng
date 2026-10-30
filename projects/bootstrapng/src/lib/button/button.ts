@@ -6,8 +6,8 @@ export const buttonVariants = {
     primary: 'theme-primary',
     accent: 'theme-accent',
     success: 'theme-success',
-    warning: 'theme-warning',
     danger: 'theme-danger',
+    warning: 'theme-warning',
     info: 'theme-info',
     inverse: 'theme-inverse',
     secondary: 'theme-secondary',
@@ -16,13 +16,13 @@ export const buttonVariants = {
     solid: 'btn-solid',
     outline: 'btn-outline',
     subtle: 'btn-subtle',
-    link: 'btn-link',
+    text: 'btn-text',
   },
   sizes: {
     default: '',
     xs: 'btn-xs',
-    sm: 'btn-sm',
-    lg: 'btn-lg',
+    small: 'btn-sm',
+    large: 'btn-lg',
     icon: 'btn-icon',
   },
   defaultVariants: {
@@ -44,17 +44,15 @@ export type ButtonSize = keyof typeof buttonVariants.sizes;
 })
 export class Button {
   variant = input<ButtonVariant>(buttonVariants.defaultVariants.variant as ButtonVariant);
-  theme = input<ButtonTheme>(buttonVariants.defaultVariants.theme as ButtonTheme);
   size = input<ButtonSize>(buttonVariants.defaultVariants.size as ButtonSize);
+  theme = input<ButtonTheme>(buttonVariants.defaultVariants.theme as ButtonTheme);
 
   classes = computed(() =>
     [
       buttonVariants.base,
       buttonVariants.variants[this.variant()],
-      buttonVariants.theme[this.theme()],
       buttonVariants.sizes[this.size()],
-    ]
-      .filter(Boolean)
-      .join(' '),
+      buttonVariants.theme[this.theme()],
+    ].join(' '),
   );
 }

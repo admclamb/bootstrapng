@@ -1,1 +1,38 @@
-<p>docs works!</p>
+<app-navbar />
+
+<div class="container-fluid">
+  <div class="row py-4">
+    <aside class="lg:col-3 mb-4 lg:mb-0">
+      <nav class="nav flex-column" aria-label="Docs navigation">
+        @for (group of nav; track group.heading) {
+          <div class="mb-4">
+            <strong class="d-flex align-items-center gap-2 mb-2 fw-semibold">
+              <i class="bi {{ group.icon }}"></i>
+              {{ group.heading }}
+            </strong>
+            <ul class="nav flex-column">
+              @for (item of group.items; track item) {
+                <li class="nav-item">
+                  @if (group.heading === 'Components' && item === 'Button') {
+                    <a
+                      routerLink="/docs/components/button"
+                      routerLinkActive="active"
+                      class="nav-link px-2 border-0"
+                      >{{ item }}</a
+                    >
+                  } @else {
+                    <span class="nav-link px-2 border-0 text-muted" aria-disabled="true">{{ item }}</span>
+                  }
+                </li>
+              }
+            </ul>
+          </div>
+        }
+      </nav>
+    </aside>
+
+    <main class="lg:col-9">
+      <router-outlet />
+    </main>
+  </div>
+</div>

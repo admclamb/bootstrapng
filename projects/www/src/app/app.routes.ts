@@ -9,5 +9,12 @@ export const routes: Routes = [
   {
     path: 'docs',
     loadComponent: () => import('./docs/docs').then((m) => m.Docs),
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'components/button' },
+      {
+        path: 'components/button',
+        loadComponent: () => import('./docs/components/button-doc/button-doc').then((m) => m.ButtonDoc),
+      },
+    ],
   },
 ];

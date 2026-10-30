@@ -1,0 +1,130 @@
+<div class="row">
+  <div class="lg:col-9">
+    <h1 class="mb-2">Button</h1>
+    <p class="text-muted mb-5">
+      Use bootstrapng's <code>bngButton</code> directive for actions in forms, dialogs, and more
+      with support for multiple themes, styles, and sizes.
+    </p>
+
+    <h2 id="base-class" class="mb-3">Base class</h2>
+    <p>
+      The <code>.btn</code> class sets up basic padding and content alignment. Apply
+      <code>bngButton</code> on top of it to opt into theme and style variants.
+    </p>
+    <div class="p-4 border rounded-3 mb-2">
+      <button type="button" class="btn">Base class</button>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button class="btn"&gt;Base class&lt;/button&gt;</code></pre>
+
+    <h2 id="variants" class="mb-3">Variants</h2>
+    <p>Combine a theme with a style using the <code>theme</code> and <code>variant</code> inputs.</p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap gap-2">
+      @for (theme of themes; track theme) {
+        @for (style of styles; track style) {
+          <button type="button" bngButton [theme]="theme" [variant]="style">{{ theme }}</button>
+        }
+      }
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button bngButton theme="primary" variant="solid"&gt;Primary&lt;/button&gt;
+&lt;button bngButton theme="primary" variant="outline"&gt;Primary&lt;/button&gt;
+&lt;button bngButton theme="primary" variant="subtle"&gt;Primary&lt;/button&gt;</code></pre>
+
+    <h2 id="text-buttons" class="mb-3">Text buttons</h2>
+    <p>Set <code>variant="text"</code> to create a button that looks like a link.</p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap gap-3">
+      @for (theme of themes; track theme) {
+        <button type="button" bngButton variant="text" [theme]="theme">{{ theme }}</button>
+      }
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button bngButton variant="text" theme="primary"&gt;Primary&lt;/button&gt;</code></pre>
+
+    <h2 id="sizes" class="mb-3">Sizes</h2>
+    <p>Use the <code>size</code> input for extra small, small, default, or large buttons.</p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap align-items-center gap-2">
+      <button type="button" bngButton theme="primary" size="xs">Extra small</button>
+      <button type="button" bngButton theme="primary" size="small">Small</button>
+      <button type="button" bngButton theme="primary">Default</button>
+      <button type="button" bngButton theme="primary" size="large">Large</button>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button bngButton theme="primary" size="xs"&gt;Extra small&lt;/button&gt;
+&lt;button bngButton theme="primary" size="small"&gt;Small&lt;/button&gt;
+&lt;button bngButton theme="primary"&gt;Default&lt;/button&gt;
+&lt;button bngButton theme="primary" size="large"&gt;Large&lt;/button&gt;</code></pre>
+
+    <h2 id="icon-buttons" class="mb-3">Icon buttons</h2>
+    <p>
+      Set <code>size="icon"</code> for square buttons that contain only an icon. Always include an
+      <code>aria-label</code>.
+    </p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap gap-2">
+      <button type="button" bngButton theme="primary" size="icon" aria-label="Confirm">
+        <i class="bi bi-check2"></i>
+      </button>
+      <button type="button" bngButton variant="outline" theme="secondary" size="icon" aria-label="Settings">
+        <i class="bi bi-gear"></i>
+      </button>
+      <button type="button" bngButton variant="subtle" theme="warning" size="icon" aria-label="Favorite">
+        <i class="bi bi-star-fill"></i>
+      </button>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button bngButton theme="primary" size="icon" aria-label="Confirm"&gt;
+  &lt;i class="bi bi-check2"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+
+    <h2 id="disabled-state" class="mb-3">Disabled state</h2>
+    <p>Add the <code>disabled</code> attribute to make a button inactive.</p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap gap-2">
+      <button type="button" bngButton theme="primary" disabled>Primary button</button>
+      <button type="button" bngButton variant="outline" theme="secondary" disabled>Button</button>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;button bngButton theme="primary" disabled&gt;Primary button&lt;/button&gt;</code></pre>
+
+    <h2 id="block-buttons" class="mb-3">Block buttons</h2>
+    <p>Use the <code>.d-grid</code> utility to create full-width "block buttons".</p>
+    <div class="p-4 border rounded-3 mb-2 d-grid gap-2">
+      <button type="button" bngButton theme="primary">Button</button>
+      <button type="button" bngButton theme="primary">Button</button>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3 mb-5"><code>&lt;div class="d-grid gap-2"&gt;
+  &lt;button bngButton theme="primary"&gt;Button&lt;/button&gt;
+  &lt;button bngButton theme="primary"&gt;Button&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+    <h2 id="toggle-buttons" class="mb-3">Toggle buttons</h2>
+    <p>
+      Apply <code>bngButton</code> to a <code>&lt;label&gt;</code> with a <code>.btn-check</code>
+      class and a nested checkbox to create a button-like toggle.
+    </p>
+    <div class="p-4 border rounded-3 mb-2 d-flex flex-wrap gap-2">
+      <label class="btn-check" bngButton theme="primary">
+        <input type="checkbox" checked autocomplete="off" />
+        Checked
+      </label>
+      <label class="btn-check" bngButton theme="primary">
+        <input type="checkbox" autocomplete="off" />
+        Toggle
+      </label>
+      <label class="btn-check" bngButton theme="primary">
+        <input type="checkbox" disabled autocomplete="off" />
+        Disabled
+      </label>
+    </div>
+    <pre class="bg-body-tertiary p-3 rounded-3"><code>&lt;label class="btn-check" bngButton theme="primary"&gt;
+  &lt;input type="checkbox" autocomplete="off" /&gt;
+  Toggle
+&lt;/label&gt;</code></pre>
+  </div>
+
+  <aside class="lg:col-3">
+    <nav aria-label="Table of contents">
+      <strong class="d-block mb-2 fw-semibold">On this page</strong>
+      <ul class="nav flex-column">
+        @for (entry of toc; track entry.id) {
+          <li class="nav-item">
+            <a class="nav-link px-0" href="#{{ entry.id }}">{{ entry.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </aside>
+</div>

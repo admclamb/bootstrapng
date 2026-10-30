@@ -1,1 +1,42 @@
-<p>mode-select works!</p>
+<button
+  type="button"
+  bngButton
+  variant="text"
+  theme="secondary"
+  [bngMenuTrigger]="modeMenu"
+  aria-label="Toggle theme"
+  class="d-flex align-items-center gap-1"
+>
+  <i class="bi {{ icon() }}"></i>
+  <i class="bi bi-chevron-expand"></i>
+</button>
+
+<div bngMenu #modeMenu="bngMenu" placement="bottom-end" class="py-1">
+  <button
+    type="button"
+    bngMenuItem
+    class="d-flex align-items-center gap-2"
+    (click)="setMode('light')"
+  >
+    <i class="bi bi-sun"></i>
+    Light
+  </button>
+  <button
+    type="button"
+    bngMenuItem
+    class="d-flex align-items-center gap-2"
+    (click)="setMode('dark')"
+  >
+    <i class="bi bi-moon-stars"></i>
+    Dark
+  </button>
+  <button
+    type="button"
+    bngMenuItem
+    class="d-flex align-items-center gap-2"
+    (click)="setMode('auto')"
+  >
+    <i class="bi bi-circle-half"></i>
+    Auto
+  </button>
+</div>

@@ -61,7 +61,10 @@
                 "input": "projects/www/public"
               }
             ],
-            "styles": ["projects/www/src/styles.scss"],
+            "styles": [
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "projects/www/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules"]
             },
