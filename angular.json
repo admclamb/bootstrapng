@@ -6,5 +6,105 @@
   },
   "newProjectRoot": "projects",
   "projects": {
+    "bootstrapng": {
+      "projectType": "library",
+      "root": "projects/bootstrapng",
+      "sourceRoot": "projects/bootstrapng/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bootstrapng/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bootstrapng/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/bootstrapng/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "www": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/www",
+      "sourceRoot": "projects/www/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/www/src/main.ts",
+            "tsConfig": "projects/www/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/www/public"
+              }
+            ],
+            "styles": ["projects/www/src/styles.scss"],
+            "server": "projects/www/src/main.server.ts",
+            "outputMode": "server",
+            "security": {
+              "allowedHosts": []
+            },
+            "ssr": {
+              "entry": "projects/www/src/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "www:build:production"
+            },
+            "development": {
+              "buildTarget": "www:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
   }
 }

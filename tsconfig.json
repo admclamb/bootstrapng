@@ -3,6 +3,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "bootstrapng": ["./dist/bootstrapng"]
+    },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -19,5 +22,25 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/bootstrapng/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bootstrapng/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/www/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/www/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/www/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/www/tsconfig.spec.json"
+    }
+  ]
 }
